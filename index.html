@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💌</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<section class="stage">
+
+  <!-- ENVELOPE -->
+  <div id="envelopeStage" class="envelope-stage">
+    <div id="envelope" class="envelope">
+      <div class="flap"></div>
+      <div class="body"></div>
+      <div class="heart">❤</div>
+    </div>
+    <p class="hint">ကိုကို ဖွင့်ကြည့်ရန် </p>
+  </div>
+
+  <!-- LETTER -->
+  <div id="letterStage" class="letter-stage hidden">
+    <div class="paper">
+
+      <p>
+        Hello KoKo,<br><br>
+       Thank you for staying with me through my good days and my bad days, <br><br> 
+    for being patient with all my moods and for always choosing to understand me.<br><br>
+    ဘေဘီဘဝထဲကို ဝင်လာတဲ့အတွက် ကျေးဇူးတင်ပါတယ်<br><br>
+        
+      </p>
+
+      <div id="questionBlock" class="question">
+        <h2>Will you be my Valentine for this year too? 💘</h2>
+
+        <div class="buttons">
+          <button id="yesBtn" class="btn yes">YES</button>
+          <div class="no-zone">
+            <button id="noBtn" class="btn no">NO</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CELEBRATION -->
+  <div id="celebrate" class="celebrate hidden">
+    <h2>💖 YESSSS 💖</h2>
+    <p>You’re officially my Valentine now, KoKo 🥰</p>
+  </div>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

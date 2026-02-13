@@ -1,0 +1,384 @@
+* { box-sizing: border-box; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(135deg,#ffe0ea,#fff6d8);
+  overflow:hidden;
+}
+
+.stage{
+  text-align:center;
+  width:min(520px,90%);
+}
+
+/* ENVELOPE */
+.envelope-stage{
+  transition: all 0.5s ease;
+}
+
+.envelope-stage.fade{
+  opacity:0;
+  transform: translateY(20px);
+}
+
+.envelope{
+  width:320px;
+  height:200px;
+  margin:auto;
+  position:relative;
+  cursor:pointer;
+}
+
+.body{
+  position:absolute;
+  inset:0;
+  background:#ff7aa0;
+  border-radius:12px;
+}
+
+.flap{
+  position:absolute;
+  inset:0;
+  background:#ff4d7d;
+  clip-path: polygon(0 0,100% 0,50% 60%);
+  transform-origin: top;
+  transition: transform 0.6s ease;
+  border-radius:12px;
+}
+
+.envelope.open .flap{
+  transform: rotateX(180deg);
+}
+
+.heart{
+  position:absolute;
+  left:50%;
+  top:55%;
+  transform:translate(-50%,-50%);
+  background:white;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+}
+
+.hint{
+  margin-top:12px;
+  opacity:.6;
+}
+
+/* LETTER */
+.letter-stage{
+  opacity:0;
+  transform: translateY(20px);
+}
+
+.letter-stage.show{
+  animation: appear 0.6s ease forwards;
+}
+
+@keyframes appear{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.paper{
+  background:white;
+  padding:28px;
+  border-radius:18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  text-align:left;
+}
+
+.sign{
+  color:#ff4d7d;
+  font-weight:900;
+}
+
+.question{
+  margin-top:18px;
+  text-align:center;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-top:12px;
+}
+
+.btn{
+  padding:12px 22px;
+  border:none;
+  border-radius:14px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.yes{ background:#ff4d7d; color:white; }
+
+.no-zone{
+  position:relative;
+  width:140px;
+  height:60px;
+}
+
+.no{
+  background:#2b2b2b;
+  color:white;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+/* CELEBRATION */
+.celebrate{
+  margin-top:20px;
+  animation: appear 0.6s ease forwards;
+}
+
+.hidden{ display:none; }
+
+/* Confetti */
+#confetti{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity 0.3s ease;
+}
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
+/* Confetti */
+#confetti{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* Floating hearts */
+.float-heart{
+  position: fixed;
+  bottom: -30px;
+  opacity: 0.95;
+  animation: floatUp 4.5s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes floatUp{
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-110vh); opacity: 0; }
+}
+
+#noBtn {
+  position: absolute;
+  transition: left 0.14s ease-out, top 0.14s ease-out;
+}
+
+/* ===== Pretty Letter UI ===== */
+.paper{
+  width: min(720px, 92vw);
+  background: #fffdf8;
+  border-radius: 18px;
+  padding: 34px 34px 28px;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle paper border + warm tone */
+.paper::before{
+  content:"";
+  position:absolute;
+  inset: 14px;
+  border: 1px solid rgba(255,77,125,0.25);
+  border-radius: 14px;
+  pointer-events:none;
+}
+
+/* very light ruled lines like notebook paper */
+.paper::after{
+  content:"";
+  position:absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,77,125,0.06) 0px,
+      rgba(255,77,125,0.06) 1px,
+      transparent 1px,
+      transparent 30px
+    );
+  opacity: 0.55;
+  pointer-events:none;
+  mix-blend-mode: multiply;
+}
+
+/* keep your content above the lines */
+.paper > *{
+  position: relative;
+  z-index: 2;
+}
+
+
+
+/* signature style */
+.paper .signature{
+  margin-top: 10px;
+  font-weight: 700;
+  color: #ff4d7d;
+}
+
+/* divider before the question */
+.paper .divider{
+  margin: 18px 0 18px;
+  height: 1px;
+  background: rgba(0,0,0,0.10);
+  border: 0;
+}
+
+/* question area spacing */
+#questionBlock{
+  margin-top: 8px;
+}
+
+/* Keep entire letter centered */
+.letter-stage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Keep content centered inside paper */
+.paper{
+  text-align: center;
+}
+
+/* Question block centered */
+.question{
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Make both buttons same vertical center */
+.buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin-top: 16px;
+}
+
+/* Match the actual YES button height */
+.no-zone{
+  position: relative;
+  width: 120px;
+  height: 52px;   /* Match your .btn height exactly */
+}
+
+/* Center NO button precisely */
+#noBtn{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left 0.14s ease-out, top 0.14s ease-out;
+}
+
+
+
+#noBtn{
+  transition: left 0.08s ease-out, top 0.08s ease-out;
+}
+
+
+
+
+/* Keep stage perfectly centered vertically + horizontally */
+.stage{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Keep envelope stage centered */
+.envelope-stage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Only show ONE stage at a time */
+.envelope-stage.hidden,
+.letter-stage.hidden{
+  display: none !important;
+}
+
+.letter-stage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter-body {
+  max-width: 520px;          /* controls paragraph width */
+  margin: 0 auto;            /* keeps it centered */
+  text-align: left;          /* makes it look like a real letter */
+}
+
+.letter-body p {
+  line-height: 1.8;          /* improves readability */
+  font-size: 16px;
+  letter-spacing: 0.3px;
+}
+
+.paper {
+  text-align: center;        /* keeps question centered */
+}
+/* === FIX paragraph stretch (force apply) === */
+.paper .letter-body{
+  max-width: 520px !important;
+  margin: 0 auto !important;
+  text-align: left !important;
+}
+
+.paper .letter-body p{
+  max-width: 520px !important;
+  margin: 0 auto !important;
+  line-height: 1.85 !important;
+  font-size: 16px !important;
+  white-space: normal !important;
+  word-break: normal !important;
+}
