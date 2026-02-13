@@ -809,3 +809,74 @@ body{
     animation: none !important;
   }
 }
+
+
+/* =========================================
+   ALIGN QUESTION LEFT + BUTTONS RIGHT
+   ========================================= */
+
+/* Entire question block behaves like normal letter flow */
+#questionBlock{
+  text-align: left !important;
+  padding: 0 44px 40px; /* keep same paper spacing */
+}
+
+/* Question text aligned left */
+#questionBlock h2{
+  text-align: left !important;
+  margin: 12px 0 18px;
+}
+
+/* Buttons aligned right */
+.buttons{
+  display: flex;
+  justify-content: flex-end !important;
+  align-items: center;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+/* Keep NO zone height correct */
+.no-zone{
+  width: 120px;
+  height: 52px;
+}
+
+
+/* =========================================
+   FORCE: Question LEFT + Buttons RIGHT
+   (Overrides your earlier flex-centering rules)
+   ========================================= */
+
+.paper{
+  text-align: left !important; /* stop global centering */
+}
+
+/* stop the question block from being a centered flex column */
+#questionBlock.question{
+  display: block !important;
+  text-align: left !important;
+  align-items: initial !important;
+}
+
+/* make the question line left */
+#questionBlock h2{
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* push buttons to the right */
+#questionBlock .buttons{
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  width: 100% !important;
+  gap: 18px !important;
+}
+
+/* keep NO zone sizing stable */
+#questionBlock .no-zone{
+  width: 120px !important;
+  height: 52px !important;
+}
