@@ -190,18 +190,28 @@ body{
 }
 
 /* Floating hearts */
+/* Floating hearts */
 .float-heart{
   position: fixed;
-  bottom: -30px;
+  bottom: -40px;
   opacity: 0.95;
-  animation: floatUp 4.5s linear forwards;
   pointer-events: none;
+  animation: floatUp linear forwards;
+  filter: drop-shadow(0 4px 10px rgba(255, 77, 125, 0.25));
+  transform: translateY(0);
 }
 
 @keyframes floatUp{
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(-110vh); opacity: 0; }
+  from {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-110vh) rotate(25deg);
+    opacity: 0;
+  }
 }
+
 
 #noBtn {
   position: absolute;
@@ -683,4 +693,119 @@ body{
 
 .no{
   background: #2b2b2b !important;
+}
+
+/* =========================================
+   LANDING (ENVELOPE) ANIMATIONS
+   Paste at VERY BOTTOM of styles.css
+   ========================================= */
+
+/* Soft floating for the whole envelope block */
+#envelopeStage{
+  animation: floatStage 3.2s ease-in-out infinite;
+}
+
+@keyframes floatStage{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-10px); }
+}
+
+/* Add a gentle glow/pulse to the envelope card */
+.envelope .body{
+  animation: glowPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes glowPulse{
+  0%,100%{
+    box-shadow: 0 18px 50px rgba(255, 77, 125, 0.20);
+    filter: saturate(1);
+  }
+  50%{
+    box-shadow: 0 28px 70px rgba(255, 77, 125, 0.35);
+    filter: saturate(1.08);
+  }
+}
+
+/* Heart “pop” loop (cute but not crazy) */
+.envelope .heart{
+  animation: heartPop 1.15s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes heartPop{
+  0%,100%{ transform: translate(-50%,-50%) scale(1); }
+  50%{ transform: translate(-50%,-50%) scale(1.12); }
+}
+
+/* Flap little wiggle BEFORE opening */
+#envelope:not(.open) .flap{
+  animation: flapWiggle 2.8s ease-in-out infinite;
+}
+
+@keyframes flapWiggle{
+  0%,100%{ transform: rotateX(0deg); }
+  50%{ transform: rotateX(10deg); }
+}
+
+/* Hint text bounce + shimmer */
+.hint{
+  animation: hintBounce 1.6s ease-in-out infinite;
+  opacity: 0.75;
+}
+
+@keyframes hintBounce{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-6px); }
+}
+
+/* Add a cute “tap to open” shimmer line behind hint */
+.hint::after{
+  content:"";
+  display:block;
+  margin: 10px auto 0;
+  width: 120px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 77, 125, 0.25);
+  overflow:hidden;
+  position: relative;
+}
+
+.hint::before{
+  content:"";
+  position:absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+  margin-top: 34px;
+  animation: shimmer 1.8s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes shimmer{
+  0%{ transform: translateX(-50%) translateX(-70px); }
+  100%{ transform: translateX(-50%) translateX(70px); }
+}
+
+/* Hover interactions (desktop) */
+.envelope:hover{
+  transform: scale(1.02);
+}
+.envelope{
+  transition: transform 0.2s ease;
+}
+
+/* Respect motion settings */
+@media (prefers-reduced-motion: reduce){
+  #envelopeStage,
+  .envelope .body,
+  .envelope .heart,
+  #envelope:not(.open) .flap,
+  .hint,
+  .hint::before{
+    animation: none !important;
+  }
 }

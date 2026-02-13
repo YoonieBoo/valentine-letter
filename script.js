@@ -295,3 +295,48 @@ noBtn.addEventListener("click", (e) => {
   );
 });
 
+/* =========================================
+   FLOATING HEARTS (Landing Only)
+   ========================================= */
+
+let heartInterval;
+
+function spawnHeart() {
+  const heart = document.createElement("div");
+  heart.className = "float-heart";
+  heart.innerHTML = "💗";
+
+  // random horizontal position
+  heart.style.left = Math.random() * 100 + "vw";
+
+  // random size
+  const size = Math.random() * 16 + 14;
+  heart.style.fontSize = size + "px";
+
+  // random animation duration
+  const duration = Math.random() * 2 + 4;
+  heart.style.animationDuration = duration + "s";
+
+  document.body.appendChild(heart);
+
+  // remove after animation
+  setTimeout(() => {
+    heart.remove();
+  }, duration * 1000);
+}
+
+function startHearts() {
+  heartInterval = setInterval(spawnHeart, 400);
+}
+
+function stopHearts() {
+  clearInterval(heartInterval);
+}
+
+/* Start hearts on load */
+startHearts();
+
+/* Stop hearts when envelope opens */
+document.getElementById("envelope").addEventListener("click", () => {
+  stopHearts();
+});
