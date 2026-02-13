@@ -382,3 +382,23 @@ body{
   white-space: normal !important;
   word-break: normal !important;
 }
+
+.celebrate-gif {
+  width: 200px;
+  display: block;
+  margin: 0 auto 20px auto;
+  border-radius: 16px;
+  animation: popIn 0.6s ease;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+  
