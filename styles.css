@@ -517,7 +517,7 @@ body{
 
 /* --- Title bar: "♡ Notepad" + dots --- */
 .paper > p::before{
-  content: "♡  Notepad";
+  content: "♡  Note to KoKo";
   position: absolute;
   left: 48px;
   top: 26px;
@@ -661,4 +661,26 @@ body{
 .yes {
   background: linear-gradient(135deg, #ff4d7d, #ff7aa8) !important;
   box-shadow: 0 10px 25px rgba(255, 77, 125, 0.35);
+}
+
+/* Reduce only Myanmar sentence */
+.myanmar-text{
+  font-size: 18px;   /* adjust if you want smaller/bigger */
+  display: block;    /* keeps spacing correct */
+  margin-top: 6px;
+}
+
+/* Make YES and NO buttons bigger */
+.btn{
+  padding: 16px 32px !important;
+  font-size: 18px !important;
+  border-radius: 999px;
+}
+
+.yes{
+  box-shadow: 0 14px 28px rgba(255, 77, 125, 0.35);
+}
+
+.no{
+  background: #2b2b2b !important;
 }
