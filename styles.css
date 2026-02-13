@@ -629,3 +629,36 @@ body{
   #questionBlock{ padding: 0 30px 34px; }
   .paper .buttons::before{ font-size: 16px; top: -92px; }
 }
+
+/* ===============================
+   FIXES
+   =============================== */
+
+/* 1. REMOVE floating fake menu text */
+.paper .buttons::before,
+.paper .buttons::after {
+  content: none !important;
+}
+
+/* 2. REMOVE the pink divider heart */
+.mini-divider {
+  display: none !important;
+}
+
+/* 3. Make BOTH buttons text white */
+.btn,
+.yes,
+.no {
+  color: #ffffff !important;
+}
+
+/* 4. Make NO button perfectly black */
+.no {
+  background: #2b2b2b !important;
+}
+
+/* 5. Make YES button pink but clean */
+.yes {
+  background: linear-gradient(135deg, #ff4d7d, #ff7aa8) !important;
+  box-shadow: 0 10px 25px rgba(255, 77, 125, 0.35);
+}
