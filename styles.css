@@ -430,3 +430,11 @@ body{
   margin-bottom: 16px;
   opacity: 0.8;
 }
+
+/* Fix: question title size (ONLY this h2) */
+#questionBlock h2 {
+  font-size: 34px;      /* change this number */
+  line-height: 1.15;
+  margin: 18px 0 22px;
+  font-weight: 800;
+}
